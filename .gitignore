@@ -1,6 +1,7 @@
 # React Native files
 node_modules/*
 package-lock.json
+.expo/*
 
 # Built application files
 *.apk
