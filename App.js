@@ -5,6 +5,8 @@ import { StyleSheet, Text, View } from 'react-native';
 // navigation
 import Dashboard from './navigation/dashboard';
 import HomePage from './navigation/homepage';
+import * as firebase from 'firebase';
+import apiKeys from './config/keys';
 
 export default class App extends React.Component {
 
@@ -14,6 +16,15 @@ export default class App extends React.Component {
       isLoaded: true,
       isAuthenticationReady: false,
       isAuthenticated: false,
+    }
+
+    // load firebase
+    if( !firebase.apps.length ) {
+      firebase.initializeApp( apiKeys.firebaseConfig );
+      firebase.auth().onAuthStateChanged(( user ) => {
+        this.setState({ isAuthenticatedReady: true });
+        this.setState({ isAuthenticated: !!user });
+      });
     }
   }
 
