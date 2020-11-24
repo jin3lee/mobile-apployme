@@ -120,10 +120,6 @@ class CreateAccountPage extends React.Component{
                                                         this.setState({ password: password });
                                                     }}
                                                 />
-
-                                                <View style={{ padding: 5 }}>
-                                                    <EyeSlash/>
-                                                </View>
                                             </View>
                                             <Underline />
                                         </View>
@@ -135,10 +131,6 @@ class CreateAccountPage extends React.Component{
                                                         this.setState({ confirmPassword: confirmPassword });
                                                     }}
                                                 />
-
-                                                <View style={{ padding: 5 }}>
-                                                    <EyeSlash/>
-                                                </View>
                                             </View>
                                             <Underline />
                                         </View>
@@ -161,11 +153,8 @@ class CreateAccountPage extends React.Component{
 
 
                 <View style={{
-                        ...StyleSheet.absoluteFillObject,
-                        position: 'absolute',
                         justifyContent: 'flex-end',
                         alignItems: 'center',
-                        marginBottom: '5%',
                 }}>
                     <View style={{ display: 'flex', flexDirection: 'row', marginTop: '5%', alignItems: 'center' }}>
                         <Text>Already have an account? </Text>
