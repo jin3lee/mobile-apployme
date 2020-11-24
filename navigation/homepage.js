@@ -23,7 +23,7 @@ export default class HomePage extends React.Component{
     render() {
         return (
             <View style={ styles.container }>
-                <StatusBar barStyle="dark-content" />
+                <StatusBar barStyle="light-content" />
                 <View style={ styles.background }>
                     <View style={ styles.blob }>
                         <PurpleBlob />
