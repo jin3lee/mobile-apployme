@@ -99,7 +99,7 @@ const styles = {
         position: 'absolute',
     },
     blob: {
-        marginTop: '-40%',
+        marginTop: '-20%',
     },
     flexContainer: {
         display: 'flex',
@@ -112,6 +112,7 @@ const styles = {
         justifyContent: 'left',
         alignContent: 'center',
         marginLeft: '10%',
+        marginBottom: '4%',
     },
     signInContainer: {
         display: 'flex',
