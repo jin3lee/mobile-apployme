@@ -34,7 +34,7 @@ export default class HomePage extends React.Component{
                     <View style={ styles.appLogoAndNameStyle }>
                         <ApployMeLogo />
                         <View style={{ justifyContent: 'center'}}>
-                            <Text style={{ marginLeft: 15, fontSize: 20, fontWeight: '350', color: 'white' }}>apployMe</Text>
+                            <Text style={{ marginLeft: 15, fontSize: 20, fontWeight: '400', color: 'white' }}>apployMe</Text>
                         </View>
                     </View>
 
@@ -48,7 +48,7 @@ export default class HomePage extends React.Component{
                                         <View style={{ padding: 5 }}>
                                             <Avatar/>
                                         </View>
-                                        <TextInput maxLength='29' placeholder="Email" style={{ color: 'black', padding: 5, width: '75%' }} 
+                                        <TextInput maxLength={29} placeholder="Email" style={{ color: 'black', padding: 5, width: '75%' }} 
                                             onChangeText={ ( email ) => {
                                                 this.setState({ email: email });
                                             }}
@@ -60,7 +60,7 @@ export default class HomePage extends React.Component{
                                         <View style={{ padding: 5 }}>
                                             <Lock/>
                                         </View>
-                                        <TextInput maxLength='29' placeholder="Password" secureTextEntry='true' style={{ color: 'black', padding: 5, width: '75%' }} 
+                                        <TextInput maxLength={29} placeholder="Password" secureTextEntry={ true } style={{ color: 'black', padding: 5, width: '75%' }} 
                                             onChangeText={ ( password ) => {
                                                 this.setState({ password: password });
                                             }}
