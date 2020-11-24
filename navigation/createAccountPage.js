@@ -3,24 +3,35 @@ import { View, Text, TextInput,
     Button, StyleSheet, Alert,
     StatusBar, TouchableOpacity } from 'react-native';
 
-import PurpleBlob from '../assets/purpleblob.js';
-import ApployMeLogo from '../assets/apployMeLogo.js';
-import Avatar from '../assets/avatar.js';
-import Lock from '../assets/lock.js';
-import Underline from '../assets/underline.js';
-import RightArrow from '../assets/rightArrow.js';
+// SVGs
+import PurpleBlob from './../assets/purpleblob.js';
+import ApployMeLogo from './../assets/apployMeLogo.js';
+import Avatar from './../assets/avatar.js';
+import Lock from './../assets/lock.js';
+import Underline from './../assets/underline.js';
+import RightArrow from './../assets/rightArrow.js';
 
-export default class CreateAccountPage extends React.Component{
+// STATE
+import { connect } from 'react-redux';
+import { PAGE_STATE_HOME } from './../redux/actionTypes.js';
+import { actionUpdatePageState } from './../redux/actions.js';
+
+class CreateAccountPage extends React.Component{
     constructor( props ) {
         super( props );
         this.state = {
             email: ' ',
             password: ' ',
         };
+        this._updatePageState = this._updatePageState.bind(this);
+    }
+
+    // navigate to different page
+    _updatePageState( pageState ) {
+        this.props.dispatch( actionUpdatePageState( pageState ) );
     }
 
     render() {
-        console.log("state", this.state);
         return (
             <View style={ styles.container }>
                 <StatusBar barStyle="light-content" />
@@ -84,7 +95,7 @@ export default class CreateAccountPage extends React.Component{
 
                 <View style={{ display: 'flex', flexDirection: 'row', marginTop: '5%', alignItems: 'center' }}>
                     <Text>Already have an account? </Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={ () => { this._updatePageState( PAGE_STATE_HOME ) } }>
                         <Text style={{ color: '#4a36a7', padding: 5 }}>Sign In</Text>
                     </TouchableOpacity>
                 </View>
@@ -159,3 +170,11 @@ const styles = {
         marginTop: '10%'
     }
 };
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      state: state,
+    };
+  };
+  
+export default connect( mapStateToProps )( CreateAccountPage );
