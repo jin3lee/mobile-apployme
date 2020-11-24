@@ -28,12 +28,10 @@ class HomePage extends React.Component{
 
     // navigate to different page
     _updatePageState( pageState ) {
-        console.log("updatePageState called");
         this.props.dispatch( actionUpdatePageState( pageState ) );
     }
 
     render() {
-        console.log("state", this.state);
         return (
             <View style={ styles.container }>
                 <StatusBar barStyle="light-content" />

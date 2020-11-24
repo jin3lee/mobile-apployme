@@ -12,13 +12,15 @@ const initialState = {
 
 function reducer( state = initialState, payload ) {
 
+    console.log('2', payload);
 	switch ( payload.type ) {
 		case UPDATE_PAGE_STATE: {
 			return { ...state, pageState: payload.pageState };
 		}
-    default: {
-      return { ...state }
-    }
+		default: {
+			console.log('DEFAULTED!!!!!!!!');
+			return { ...state }
+		}
 	}
 }
 

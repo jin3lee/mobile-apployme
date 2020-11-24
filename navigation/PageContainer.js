@@ -56,6 +56,7 @@ const styles = {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log('PageContainer', state.reducer);
   return {
     pageState: state.reducer.pageState,
   };
