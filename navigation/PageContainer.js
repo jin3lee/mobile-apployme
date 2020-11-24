@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { View, Text } from "react-native";
 
 import HomePage from "./homepage.js";
+import CreateAccountPage from "./createAccountPage.js";
 import DashBoard from "./dashboard.js";
 
 import { PAGE_STATE_HOME, PAGE_STATE_SIGN_UP } from './../redux/actionTypes.js';
@@ -31,7 +32,7 @@ class PageContainer extends React.Component {
 
     switch( pageState ) {
       case PAGE_STATE_SIGN_UP:
-        return <DashBoard />;
+        return <CreateAccountPage />;
       case PAGE_STATE_HOME:
         return <HomePage />;
       default:

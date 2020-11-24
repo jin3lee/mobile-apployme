@@ -3,33 +3,20 @@ import { View, Text, TextInput,
     Button, StyleSheet, Alert,
     StatusBar, TouchableOpacity } from 'react-native';
 
-// SVGs
-import PurpleBlob from './../assets/purpleblob.js';
-import ApployMeLogo from './../assets/apployMeLogo.js';
-import Avatar from './../assets/avatar.js';
-import Lock from './../assets/lock.js';
-import Underline from './../assets/underline.js';
-import RightArrow from './../assets/rightArrow.js';
+import PurpleBlob from '../assets/purpleblob.js';
+import ApployMeLogo from '../assets/apployMeLogo.js';
+import Avatar from '../assets/avatar.js';
+import Lock from '../assets/lock.js';
+import Underline from '../assets/underline.js';
+import RightArrow from '../assets/rightArrow.js';
 
-// STATE
-import { connect } from 'react-redux';
-import { PAGE_STATE_SIGN_UP } from './../redux/actionTypes.js';
-import { actionUpdatePageState } from './../redux/actions.js';
-
-class HomePage extends React.Component{
+export default class CreateAccountPage extends React.Component{
     constructor( props ) {
         super( props );
         this.state = {
             email: ' ',
             password: ' ',
         };
-        this._updatePageState = this._updatePageState.bind(this);
-    }
-
-    // navigate to different page
-    _updatePageState( pageState ) {
-        console.log("updatePageState called");
-        this.props.dispatch( actionUpdatePageState( pageState ) );
     }
 
     render() {
@@ -47,7 +34,7 @@ class HomePage extends React.Component{
                     <View style={ styles.appLogoAndNameStyle }>
                         <ApployMeLogo />
                         <View style={{ justifyContent: 'center'}}>
-                            <Text style={{ marginLeft: 15, fontSize: 20, fontWeight: '400', color: 'white' }}>apployMe</Text>
+                            <Text style={{ marginLeft: 15, fontSize: 20, fontWeight: '400', color: 'white' }}>Create an Account</Text>
                         </View>
                     </View>
 
@@ -96,9 +83,9 @@ class HomePage extends React.Component{
                 </View>
 
                 <View style={{ display: 'flex', flexDirection: 'row', marginTop: '5%', alignItems: 'center' }}>
-                    <Text>Don't have an account yet? </Text>
-                    <TouchableOpacity onPress={ () => { this._updatePageState( PAGE_STATE_SIGN_UP ) } }>
-                        <Text style={{ color: '#4a36a7', padding: 5 }}>Sign Up</Text>
+                    <Text>Already have an account? </Text>
+                    <TouchableOpacity>
+                        <Text style={{ color: '#4a36a7', padding: 5 }}>Sign In</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -172,11 +159,3 @@ const styles = {
         marginTop: '10%'
     }
 };
-
-const mapStateToProps = (state, ownProps) => {
-    return {
-      state: state,
-    };
-  };
-  
-export default connect( mapStateToProps )( HomePage );
