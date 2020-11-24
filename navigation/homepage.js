@@ -1,10 +1,14 @@
 import React from 'react';
 import { View, Text, TextInput,
     Button, StyleSheet, Alert,
-    StatusBar } from 'react-native';
+    StatusBar, TouchableOpacity } from 'react-native';
 
 import PurpleBlob from './../assets/purpleblob.js';
 import ApployMeLogo from './../assets/apployMeLogo.js';
+import Avatar from './../assets/avatar.js';
+import Lock from './../assets/lock.js';
+import Underline from './../assets/underline.js';
+import RightArrow from './../assets/rightArrow.js';
 
 export default class HomePage extends React.Component{
     constructor( props ) {
@@ -29,8 +33,8 @@ export default class HomePage extends React.Component{
                 <View style={ styles.flexContainer }>
                     <View style={ styles.appLogoAndNameStyle }>
                         <ApployMeLogo />
-                        <View style={{ backgroundColor: 'green', justifyContent: 'center'}}>
-                            <Text style={{ marginLeft: 15, fontSize: 20, fontWeight: '300' }}>apployMe</Text>
+                        <View style={{ justifyContent: 'center'}}>
+                            <Text style={{ marginLeft: 15, fontSize: 20, fontWeight: '350', color: 'white' }}>apployMe</Text>
                         </View>
                     </View>
 
@@ -39,10 +43,30 @@ export default class HomePage extends React.Component{
                             <View style={ styles.signInWhiteBoxContainer }>
                                 <View style={ styles.signInContainerMarginLeft }>
                                     <Text style={{ fontSize: 40, fontWeight: '600' }}>Sign In</Text>
-                                    <Text>Email</Text>
-                                    <Text>Password</Text>
-                                    <Text>Forgot Password</Text>
-                                    <Text>Log In -></Text>
+                                    
+                                    <View style={ styles.inputContainer }>
+                                        <View style={{ marginRight: 10 }}>
+                                            <Avatar/>
+                                        </View>
+                                        <Text style={{ color: '#9E9E9E' }}>Email</Text>
+                                    </View>
+                                    <Underline />
+
+                                    <View style={ styles.inputContainer }>
+                                        <View style={{ marginRight: 10 }}>
+                                            <Lock/>
+                                        </View>
+                                        <Text style={{ color: '#9E9E9E' }}>Password</Text>
+                                    </View>
+                                    <Underline />
+
+                                    <TouchableOpacity style={{ width: 180, paddingTop: 10, paddingBottom: 10, marginTop: 10, marginBottom: 10 }}>
+                                        <Text style={{ fontSize: 14, fontWeight: '400', color: '#9E9E9E'}}>Forgot password?</Text>
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity style={{ backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        <RightArrow />
+                                    </TouchableOpacity>
                                 </View>
                             </View>
                         </View>
@@ -50,7 +74,12 @@ export default class HomePage extends React.Component{
 
                 </View>
 
-                <Text>Sign Up or Login ..</Text>
+                <View style={{ display: 'flex', flexDirection: 'row', marginTop: '5%', alignItems: 'center' }}>
+                    <Text>Don't have an account yet? </Text>
+                    <TouchableOpacity>
+                        <Text style={{ color: '#4a36a7', padding: 5 }}>Sign Up</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -61,7 +90,7 @@ const styles = {
     container: {
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgb(255, 255, 240)',
+        backgroundColor: '#E5E5E5',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -75,20 +104,17 @@ const styles = {
     flexContainer: {
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: 'red',
         width: '100%',
     },
     appLogoAndNameStyle: {
         display: 'flex',
         flexDirection: 'row',
-        backgroundColor: 'blue',
         justifyContent: 'left',
         alignContent: 'center',
         marginLeft: '10%',
     },
     signInContainer: {
         display: 'flex',
-        backgroundColor: 'pink',
         justifyContent: 'left',
     },
     signInWhiteBoxContainer: {
@@ -116,4 +142,11 @@ const styles = {
         marginLeft: 30,
         marginTop: 56,
     },
+    inputContainer: {
+        marginLeft: 5,
+        display: 'flex',
+        flexDirection: 'row',
+        marginBottom: 5,
+        marginTop: '10%'
+    }
 };
