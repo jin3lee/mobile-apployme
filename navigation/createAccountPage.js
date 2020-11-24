@@ -9,7 +9,7 @@ import CirclePageMarkOne from './../assets/circlePageMarkOne.js';
 import Avatar from './../assets/avatar.js';
 import Lock from './../assets/lock.js';
 import Underline from './../assets/underline.js';
-import RightArrow from './../assets/rightArrow.js';
+import ContinueButtonGray from './../assets/continueButtonGray.js';
 
 // STATE
 import { connect } from 'react-redux';
@@ -53,7 +53,6 @@ class CreateAccountPage extends React.Component{
                         <View style={ styles.outerBorderStyle }>
                             <View style={ styles.signInWhiteBoxContainer }>
                                 <View style={ styles.signInContainerMarginLeft }>
-                                    <Text style={{ fontSize: 40, fontWeight: '600' }}>Sign In</Text>
                                     
                                     <View style={ styles.inputContainer }>
                                         <View style={{ padding: 5 }}>
@@ -79,12 +78,14 @@ class CreateAccountPage extends React.Component{
                                     </View>
                                     <Underline />
 
-                                    <TouchableOpacity style={{ width: 180, paddingTop: 10, paddingBottom: 10, marginTop: 10, marginBottom: 10 }}>
-                                        <Text style={{ fontSize: 14, fontWeight: '400', color: '#9E9E9E'}}>Forgot password?</Text>
+
+                                    <TouchableOpacity style={{ marginTop: 30, backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                        <ContinueButtonGray />
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity style={{ backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                        <RightArrow />
+                                    <TouchableOpacity style={{ paddingTop: 22 }}>
+                                        <Text style={{ fontSize: 14, fontWeight: '400', color: '#9E9E9E'}}>By signing up, you agree to apployMe's</Text>
+                                        <Text style={{ fontSize: 14, fontWeight: '400', color: 'black'}}>Terms of Service & Privacy Policy</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
