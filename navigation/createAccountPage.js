@@ -11,6 +11,8 @@ import CameraIcon from './../assets/cameraIcon.js';
 import EyeSlash from './../assets/eyeSlash.js';
 import Underline from './../assets/underline.js';
 import UnderlineShort from './../assets/underlineShort.js';
+import UnderlineGreen from './../assets/underlineGreen.js';
+import UnderlineGreenShort from './../assets/underlineGreenShort.js';
 import ContinueButtonGray from './../assets/continueButtonGray.js';
 
 // STATE
@@ -22,12 +24,12 @@ class CreateAccountPage extends React.Component{
     constructor( props ) {
         super( props );
         this.state = {
+            firstName: ' ',
+            lastName: ' ',
+            phoneNumber: ' ',
             email: ' ',
             password: ' ',
             confirmPassword: ' ',
-            phoneNumber: ' ',
-            firstName: ' ',
-            lastName: ' ',
         };
         this._updatePageState = this._updatePageState.bind(this);
     }
