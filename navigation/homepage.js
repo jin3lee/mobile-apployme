@@ -16,11 +16,11 @@ export default class HomePage extends React.Component{
         this.state = {
             email: ' ',
             password: ' ',
-            confirmPassword: ' ',
         };
     }
 
     render() {
+        console.log("state", this.state);
         return (
             <View style={ styles.container }>
                 <StatusBar barStyle="light-content" />
@@ -48,7 +48,11 @@ export default class HomePage extends React.Component{
                                         <View style={{ padding: 5 }}>
                                             <Avatar/>
                                         </View>
-                                        <TextInput maxLength='29' placeholder="Email" style={{ color: '#9E9E9E', padding: 5, width: '75%' }}></TextInput>
+                                        <TextInput maxLength='29' placeholder="Email" style={{ color: 'black', padding: 5, width: '75%' }} 
+                                            onChangeText={ ( email ) => {
+                                                this.setState({ email: email });
+                                            }}
+                                        />
                                     </View>
                                     <Underline />
 
@@ -56,7 +60,11 @@ export default class HomePage extends React.Component{
                                         <View style={{ padding: 5 }}>
                                             <Lock/>
                                         </View>
-                                        <TextInput maxLength='29' placeholder="Password" style={{ color: '#9E9E9E', padding: 5, width: '75%' }}></TextInput>
+                                        <TextInput maxLength='29' placeholder="Password" secureTextEntry='true' style={{ color: 'black', padding: 5, width: '75%' }} 
+                                            onChangeText={ ( password ) => {
+                                                this.setState({ password: password });
+                                            }}
+                                        />
                                     </View>
                                     <Underline />
 
