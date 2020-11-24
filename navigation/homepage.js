@@ -37,9 +37,13 @@ export default class HomePage extends React.Component{
                     <View style={ styles.signInContainer }>
                         <View style={ styles.outerBorderStyle }>
                             <View style={ styles.signInWhiteBoxContainer }>
-                                <Text>Sign In</Text>
-                                <Text>Email</Text>
-                                <Text>Password</Text>
+                                <View style={ styles.signInContainerMarginLeft }>
+                                    <Text style={{ fontSize: 40, fontWeight: '600' }}>Sign In</Text>
+                                    <Text>Email</Text>
+                                    <Text>Password</Text>
+                                    <Text>Forgot Password</Text>
+                                    <Text>Log In -></Text>
+                                </View>
                             </View>
                         </View>
                     </View>
@@ -104,8 +108,12 @@ const styles = {
         borderLeftWidth: 0,
         borderBottomRightRadius: 40,
         borderTopRightRadius: 40,
-        backgroundColor: 'rgba(255,255,255,.15)',
-        borderColor: 'rgba(255, 255, 255, .15)',
+        backgroundColor: 'rgba( 255, 255, 255, .15 )',
+        borderColor: 'rgba( 255, 255, 255, .15 )',
         justifyContent: 'center'
+    },
+    signInContainerMarginLeft: {
+        marginLeft: 30,
+        marginTop: 56,
     },
 };
