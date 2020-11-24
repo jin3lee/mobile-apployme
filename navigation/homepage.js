@@ -45,18 +45,18 @@ export default class HomePage extends React.Component{
                                     <Text style={{ fontSize: 40, fontWeight: '600' }}>Sign In</Text>
                                     
                                     <View style={ styles.inputContainer }>
-                                        <View style={{ marginRight: 10 }}>
+                                        <View style={{ padding: 5 }}>
                                             <Avatar/>
                                         </View>
-                                        <Text style={{ color: '#9E9E9E' }}>Email</Text>
+                                        <TextInput maxLength='29' placeholder="Email" style={{ color: '#9E9E9E', padding: 5, width: '75%' }}></TextInput>
                                     </View>
                                     <Underline />
 
                                     <View style={ styles.inputContainer }>
-                                        <View style={{ marginRight: 10 }}>
+                                        <View style={{ padding: 5 }}>
                                             <Lock/>
                                         </View>
-                                        <Text style={{ color: '#9E9E9E' }}>Password</Text>
+                                        <TextInput maxLength='29' placeholder="Password" style={{ color: '#9E9E9E', padding: 5, width: '75%' }}></TextInput>
                                     </View>
                                     <Underline />
 
