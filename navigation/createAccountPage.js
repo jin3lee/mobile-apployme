@@ -6,9 +6,11 @@ import { View, Text, TextInput,
 // SVGs
 import PurpleBlob from './../assets/purpleblob.js';
 import CirclePageMarkOne from './../assets/circlePageMarkOne.js';
-import Avatar from './../assets/avatar.js';
-import Lock from './../assets/lock.js';
+import UploadPicture from './../assets/uploadPicture.js';
+import CameraIcon from './../assets/cameraIcon.js';
+import EyeSlash from './../assets/eyeSlash.js';
 import Underline from './../assets/underline.js';
+import UnderlineShort from './../assets/underlineShort.js';
 import ContinueButtonGray from './../assets/continueButtonGray.js';
 
 // STATE
@@ -22,6 +24,10 @@ class CreateAccountPage extends React.Component{
         this.state = {
             email: ' ',
             password: ' ',
+            confirmPassword: ' ',
+            phoneNumber: ' ',
+            firstName: ' ',
+            lastName: ' ',
         };
         this._updatePageState = this._updatePageState.bind(this);
     }
@@ -53,31 +59,92 @@ class CreateAccountPage extends React.Component{
                         <View style={ styles.outerBorderStyle }>
                             <View style={ styles.signInWhiteBoxContainer }>
                                 <View style={ styles.signInContainerMarginLeft }>
+                                    <View style={{ display: 'flex', flexDirection: 'row' }}>
+                                        <View style={{ display: 'flex', flexDirection: 'row' }}>
+                                            <UploadPicture />
+                                            <View style={{ justifyContent: 'flex-end', bottom: 10, right: 40 }}>
+                                                <CameraIcon />
+                                            </View>
+                                        </View>
+                                        
+                                        <View style={{ justifyContent: 'space-around', right: 25 }}>
+                                            <View>
+                                                <View style={ styles.inputContainer }>
+                                                    <TextInput maxLength={29} placeholder="First Name" style={{ color: 'black', padding: 5, width: '75%' }} 
+                                                        onChangeText={ ( firstName ) => {
+                                                            this.setState({ firstName: firstName });
+                                                        }}
+                                                    />
+                                                </View>
+                                                <UnderlineShort />
+                                            </View>
+                                            
+                                            <View>
+                                                <View style={ styles.inputContainer }>
+                                                    <TextInput maxLength={29} placeholder="Last Name" style={{ color: 'black', padding: 5, width: '75%' }} 
+                                                        onChangeText={ ( lastName ) => {
+                                                            this.setState({ lastName: lastName });
+                                                        }}
+                                                    />
+                                                </View>
+                                                <UnderlineShort />
+                                            </View>
+                                        </View>
+                                    </View>
                                     
-                                    <View style={ styles.inputContainer }>
-                                        <View style={{ padding: 5 }}>
-                                            <Avatar/>
+                                    <View style={{ height:'35%', display: 'flex', justifyContent: 'space-between'}}>
+                                        <View style={ styles.lowerInputContainer }>
+                                            <View style={ styles.inputContainer }>
+                                                <TextInput dataDetectorTypes='phoneNumber' maxLength={29} placeholder="Phone Number" style={{ color: 'black', padding: 5, width: '75%' }} 
+                                                    onChangeText={ ( phoneNumber ) => {
+                                                        this.setState({ phoneNumber: phoneNumber });
+                                                    }}
+                                                />
+                                            </View>
+                                            <Underline />
                                         </View>
-                                        <TextInput maxLength={29} placeholder="Email" style={{ color: 'black', padding: 5, width: '75%' }} 
-                                            onChangeText={ ( email ) => {
-                                                this.setState({ email: email });
-                                            }}
-                                        />
-                                    </View>
-                                    <Underline />
-
-                                    <View style={ styles.inputContainer }>
-                                        <View style={{ padding: 5 }}>
-                                            <Lock/>
+                                        
+                                        <View style={ styles.lowerInputContainer }>
+                                            <View style={ styles.inputContainer }>
+                                                <TextInput maxLength={29} placeholder="Email" style={{ color: 'black', padding: 5, width: '75%' }} 
+                                                    onChangeText={ ( email ) => {
+                                                        this.setState({ email: email });
+                                                    }}
+                                                />
+                                            </View>
+                                            <Underline />
                                         </View>
-                                        <TextInput maxLength={29} placeholder="Password" secureTextEntry={ true } style={{ color: 'black', padding: 5, width: '75%' }} 
-                                            onChangeText={ ( password ) => {
-                                                this.setState({ password: password });
-                                            }}
-                                        />
-                                    </View>
-                                    <Underline />
 
+                                        <View style={ styles.lowerInputContainer }>
+                                            <View style={ styles.inputContainer }>
+                                                <TextInput maxLength={29} placeholder="Password" secureTextEntry={ true } style={{ color: 'black', padding: 5, width: '75%' }} 
+                                                    onChangeText={ ( password ) => {
+                                                        this.setState({ password: password });
+                                                    }}
+                                                />
+
+                                                <View style={{ padding: 5 }}>
+                                                    <EyeSlash/>
+                                                </View>
+                                            </View>
+                                            <Underline />
+                                        </View>
+
+                                        <View style={ styles.lowerInputContainer }>
+                                            <View style={ styles.inputContainer }>
+                                                <TextInput maxLength={29} placeholder="Confirm Password" secureTextEntry={ true } style={{ color: 'black', padding: 5, width: '75%' }} 
+                                                    onChangeText={ ( confirmPassword ) => {
+                                                        this.setState({ confirmPassword: confirmPassword });
+                                                    }}
+                                                />
+
+                                                <View style={{ padding: 5 }}>
+                                                    <EyeSlash/>
+                                                </View>
+                                            </View>
+                                            <Underline />
+                                        </View>
+                                    </View>
 
                                     <TouchableOpacity style={{ marginTop: 30, backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                         <ContinueButtonGray />
@@ -175,11 +242,11 @@ const styles = {
         marginTop: 56,
     },
     inputContainer: {
-        marginLeft: 5,
         display: 'flex',
         flexDirection: 'row',
-        marginBottom: 5,
-        marginTop: '10%'
+    },
+    lowerInputContainer: {
+        marginTop: '3%'
     }
 };
 

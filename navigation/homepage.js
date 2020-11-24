@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput,
-    Button, StyleSheet, Alert,
+    StyleSheet, Alert,
     StatusBar, TouchableOpacity } from 'react-native';
 
 // SVGs
