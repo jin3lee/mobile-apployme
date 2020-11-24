@@ -5,7 +5,7 @@ import { View, Text, TextInput,
 
 // SVGs
 import PurpleBlob from './../assets/purpleblob.js';
-import ApployMeLogo from './../assets/apployMeLogo.js';
+import CirclePageMarkOne from './../assets/circlePageMarkOne.js';
 import Avatar from './../assets/avatar.js';
 import Lock from './../assets/lock.js';
 import Underline from './../assets/underline.js';
@@ -43,9 +43,9 @@ class CreateAccountPage extends React.Component{
                 
                 <View style={ styles.flexContainer }>
                     <View style={ styles.appLogoAndNameStyle }>
-                        <ApployMeLogo />
                         <View style={{ justifyContent: 'center'}}>
-                            <Text style={{ marginLeft: 15, fontSize: 20, fontWeight: '400', color: 'white' }}>Create an Account</Text>
+                            <Text style={{ fontSize: 30, marginBottom: 10, fontWeight: '700', color: 'white' }}>Create an Account</Text>
+                            <CirclePageMarkOne />
                         </View>
                     </View>
 
@@ -90,14 +90,23 @@ class CreateAccountPage extends React.Component{
                             </View>
                         </View>
                     </View>
-
                 </View>
 
-                <View style={{ display: 'flex', flexDirection: 'row', marginTop: '5%', alignItems: 'center' }}>
-                    <Text>Already have an account? </Text>
-                    <TouchableOpacity onPress={ () => { this._updatePageState( PAGE_STATE_HOME ) } }>
-                        <Text style={{ color: '#4a36a7', padding: 5 }}>Sign In</Text>
-                    </TouchableOpacity>
+
+
+                <View style={{
+                        ...StyleSheet.absoluteFillObject,
+                        position: 'absolute',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        marginBottom: '5%',
+                }}>
+                    <View style={{ display: 'flex', flexDirection: 'row', marginTop: '5%', alignItems: 'center' }}>
+                        <Text>Already have an account? </Text>
+                        <TouchableOpacity onPress={ () => { this._updatePageState( PAGE_STATE_HOME ) } }>
+                            <Text style={{ color: '#4a36a7', padding: 5 }}>Sign In</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         );
@@ -123,7 +132,9 @@ const styles = {
     flexContainer: {
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'flex-start',
         width: '100%',
+        top: -20,
     },
     appLogoAndNameStyle: {
         display: 'flex',
@@ -131,7 +142,7 @@ const styles = {
         justifyContent: 'left',
         alignContent: 'center',
         marginLeft: '10%',
-        marginBottom: '4%',
+        marginBottom: '5%',
     },
     signInContainer: {
         display: 'flex',
@@ -139,7 +150,7 @@ const styles = {
     },
     signInWhiteBoxContainer: {
         display: 'flex',
-        height: 387,
+        height: 460,
         width: 330,
         borderLeftWidth: 0,
         borderColor: 'rgba(255,255,255,.15)',
@@ -148,7 +159,7 @@ const styles = {
         backgroundColor: 'white',
     },
     outerBorderStyle: {
-        height: 419,
+        height: 487,
         width: 347,
         borderWidth: 0,
         borderLeftWidth: 0,
