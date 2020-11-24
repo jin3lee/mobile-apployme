@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput,
-    Button, StyleSheet, Alert,
+    StyleSheet, Alert,
     StatusBar, TouchableOpacity } from 'react-native';
 
 // SVGs
@@ -46,7 +46,6 @@ class CreateAccountPage extends React.Component{
                         <PurpleBlob />
                     </View>
                 </View>
-                
                 <View style={ styles.flexContainer }>
                     <View style={ styles.appLogoAndNameStyle }>
                         <View style={{ justifyContent: 'center'}}>
@@ -91,7 +90,6 @@ class CreateAccountPage extends React.Component{
                                             </View>
                                         </View>
                                     </View>
-                                    
                                     <View style={{ height:'35%', display: 'flex', justifyContent: 'space-between'}}>
                                         <View style={ styles.lowerInputContainer }>
                                             <View style={ styles.inputContainer }>
