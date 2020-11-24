@@ -49,7 +49,7 @@ class CreateAccountPage extends React.Component{
                 <View style={ styles.flexContainer }>
                     <View style={ styles.appLogoAndNameStyle }>
                         <View style={{ justifyContent: 'center'}}>
-                            <Text style={{ fontSize: 30, marginBottom: 10, fontWeight: '700', color: 'white' }}>Create an Account</Text>
+                            <Text style={{ fontSize: 30, marginBottom: 10, marginTop: '10%', fontWeight: '700', color: 'white' }}>Create an Account</Text>
                             <CirclePageMarkOne />
                         </View>
                     </View>
@@ -134,23 +134,26 @@ class CreateAccountPage extends React.Component{
                                             </View>
                                             <Underline />
                                         </View>
+
+                                        <View style={ styles.lowerInputContainer }>
+                                            <TouchableOpacity style={{ backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                                <ContinueButtonGray />
+                                            </TouchableOpacity>
+                                        </View>
+
+                                        <View style={ styles.lowerInputContainer }>
+                                            <TouchableOpacity >
+                                                <Text style={{ fontSize: 14, fontWeight: '400', color: '#9E9E9E'}}>By signing up, you agree to apployMe's</Text>
+                                                <Text style={{ fontSize: 14, fontWeight: '400', color: 'black'}}>Terms of Service & Privacy Policy</Text>
+                                            </TouchableOpacity>
+                                        </View>
                                     </View>
 
-                                    <TouchableOpacity style={{ marginTop: 30, backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                        <ContinueButtonGray />
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity style={{ paddingTop: 22 }}>
-                                        <Text style={{ fontSize: 14, fontWeight: '400', color: '#9E9E9E'}}>By signing up, you agree to apployMe's</Text>
-                                        <Text style={{ fontSize: 14, fontWeight: '400', color: 'black'}}>Terms of Service & Privacy Policy</Text>
-                                    </TouchableOpacity>
                                 </View>
                             </View>
                         </View>
                     </View>
                 </View>
-
-
 
                 <View style={{
                         justifyContent: 'flex-end',
@@ -226,14 +229,14 @@ const styles = {
     },
     signInContainerMarginLeft: {
         marginLeft: 30,
-        marginTop: 56,
+        marginTop: 30,
     },
     inputContainer: {
         display: 'flex',
         flexDirection: 'row',
     },
     lowerInputContainer: {
-        marginTop: '3%'
+        marginTop: '5%'
     }
 };
 
