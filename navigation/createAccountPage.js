@@ -20,6 +20,17 @@ import { connect } from 'react-redux';
 import { PAGE_STATE_HOME } from './../redux/actionTypes.js';
 import { actionUpdatePageState } from './../redux/actions.js';
 
+// VALIDATOR
+var validator = require("email-validator");
+var passwordValidator = require('password-validator');
+import parsePhoneNumber from 'libphonenumber-js';
+
+//const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
+ 
+// Create a schema
+var schema = new passwordValidator();
+schema.is().min(8);     // Minimum length 8
+
 class CreateAccountPage extends React.Component{
     constructor( props ) {
         super( props );
@@ -40,6 +51,15 @@ class CreateAccountPage extends React.Component{
     }
 
     render() {
+
+        console.log("email validator", validator.validate("test@email.com"));
+        console.log("password validator", schema.validate("hello234"));
+        const phoneNumber = parsePhoneNumber('534269441', 'US')
+        
+        if ( phoneNumber ) {
+            console.log( "phone#", phoneNumber.isValid() )
+        }
+
         return (
             <View style={ styles.container }>
                 <StatusBar barStyle="light-content" />
@@ -77,7 +97,7 @@ class CreateAccountPage extends React.Component{
                                                         }}
                                                     />
                                                 </View>
-                                                <UnderlineShort />
+                                                { (false) ? <UnderlineShort /> : <UnderlineGreenShort /> }
                                             </View>
                                             
                                             <View>
