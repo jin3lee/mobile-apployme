@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput,
-    StyleSheet, Alert,
+    StyleSheet, Alert, Image,
     StatusBar, TouchableOpacity } from 'react-native';
 
 // SVGs
@@ -52,6 +52,7 @@ class CreateAccountPage extends React.Component{
             email: ' ',
             password: ' ',
             confirmPassword: ' ',
+            portraitUri: null,
         };
         this._updatePageState = this._updatePageState.bind(this);
     }
@@ -62,7 +63,7 @@ class CreateAccountPage extends React.Component{
     }
 
     render() {
-
+        console.log("this.state.portraitUri: ", this.state.portraitUri);
         return (
             <View style={ styles.container }>
                 <StatusBar barStyle="light-content" />
@@ -85,9 +86,30 @@ class CreateAccountPage extends React.Component{
                                 <View style={ styles.signInContainerMarginLeft }>
                                     <View style={{ display: 'flex', flexDirection: 'row' }}>
                                         <View style={{ display: 'flex', flexDirection: 'row' }}>
-                                            <UploadPicture />
+                                            { ( this.state.portraitUri ) 
+                                                ? <Image source={{ uri: this.state.portraitUri }} style={{ width: 87, height: 87, overflow: 'hidden', borderRadius: 105 / 2, }} /> 
+                                                : <UploadPicture /> }
                                             <View style={{ justifyContent: 'flex-end', bottom: 10, right: 40 }}>
-                                                <CameraIcon />
+                                                <TouchableOpacity onPress={ async () => {
+                                                    const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
+                                                    if (status !== 'granted') {
+                                                      alert('Sorry, we need camera roll permissions to make this work!');
+                                                    } else {
+
+                                                        let result = await ImagePicker.launchImageLibraryAsync({
+                                                            mediaTypes: ImagePicker.MediaTypeOptions.All,
+                                                            allowsEditing: true,
+                                                            aspect: [4, 3],
+                                                            quality: 1,
+                                                        });
+
+                                                        if (!result.cancelled) {
+                                                            this.setState({ portraitUri: result.uri });
+                                                        }
+                                                    }
+                                                }}>
+                                                    <CameraIcon />
+                                                </TouchableOpacity>
                                             </View>
                                         </View>
                                         
