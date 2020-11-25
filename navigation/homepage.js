@@ -16,6 +16,9 @@ import { connect } from 'react-redux';
 import { PAGE_STATE_SIGN_UP } from './../redux/actionTypes.js';
 import { actionUpdatePageState } from './../redux/actions.js';
 
+// Firebase
+import * as firebase from 'firebase';
+
 class HomePage extends React.Component{
     constructor( props ) {
         super( props );
@@ -24,11 +27,21 @@ class HomePage extends React.Component{
             password: ' ',
         };
         this._updatePageState = this._updatePageState.bind(this);
+        this._onLoginPress = this._onLoginPress.bind(this);
     }
 
     // navigate to different page
     _updatePageState( pageState ) {
         this.props.dispatch( actionUpdatePageState( pageState ) );
+    }
+
+    _onLoginPress = () => {
+        firebase.auth()
+        .signInWithEmailAndPassword( this.state.email, this.state.password )
+        .then(
+            () => { console.log("success login") },
+            ( error ) => { Alert.alert( error.message ); }
+        );
     }
 
     render() {
@@ -83,7 +96,7 @@ class HomePage extends React.Component{
                                         <Text style={{ fontSize: 14, fontWeight: '400', color: '#9E9E9E'}}>Forgot password?</Text>
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity style={{ backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <TouchableOpacity onPress={()=>{ this._onLoginPress() }} style={{ backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                         <RightArrow />
                                     </TouchableOpacity>
                                 </View>

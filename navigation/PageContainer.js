@@ -6,8 +6,13 @@ import { View, Text } from "react-native";
 import HomePage from "./homepage.js";
 import CreateAccountPage from "./createAccountPage.js";
 import DashBoard from "./dashboard.js";
+import ApiKeys from './../config/keys.js';
 
 import { PAGE_STATE_HOME, PAGE_STATE_SIGN_UP } from './../redux/actionTypes.js';
+
+
+// firebase
+import * as firebase from 'firebase';
 
 class PageContainer extends React.Component {
 
@@ -17,6 +22,10 @@ class PageContainer extends React.Component {
       pageState: null,
     }
     this._getPageBasedOnState = this._getPageBasedOnState.bind(this);
+
+    if(!firebase.apps.length) {
+      firebase.initializeApp( ApiKeys.firebaseConfig );
+    }
   }
 
   componentDidMount() {

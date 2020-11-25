@@ -7,6 +7,12 @@ import PageContainer from './navigation/PageContainer.js';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
 
+// firebase
+var firebase = require("firebase/app");
+
+// Add the Firebase products that you want to use
+require("firebase/auth");
+
 export default function App() {
   return (
     <Provider store={ store }>
