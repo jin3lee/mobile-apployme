@@ -13,7 +13,7 @@ import RightArrow from './../assets/rightArrow.js';
 
 // STATE
 import { connect } from 'react-redux';
-import { PAGE_STATE_SIGN_UP } from './../redux/actionTypes.js';
+import { PAGE_STATE_SIGN_UP, PAGE_STATE_DASH_BOARD } from './../redux/actionTypes.js';
 import { actionUpdatePageState } from './../redux/actions.js';
 
 // Firebase
@@ -39,7 +39,7 @@ class HomePage extends React.Component{
         firebase.auth()
         .signInWithEmailAndPassword( this.state.email, this.state.password )
         .then(
-            () => { console.log("success login") },
+            () => { /* Authenticated and switches to dashboard */ },
             ( error ) => { Alert.alert( error.message ); }
         );
     }
@@ -96,7 +96,7 @@ class HomePage extends React.Component{
                                         <Text style={{ fontSize: 14, fontWeight: '400', color: '#9E9E9E'}}>Forgot password?</Text>
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity onPress={()=>{ this._onLoginPress() }} style={{ backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <TouchableOpacity onPress={ ()=>{ this._onLoginPress() }} style={{ backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                         <RightArrow />
                                     </TouchableOpacity>
                                 </View>

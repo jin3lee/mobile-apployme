@@ -29,6 +29,9 @@ var validator = require("email-validator");
 var passwordValidator = require('password-validator');
 import parsePhoneNumber from 'libphonenumber-js';
 
+// Firebase
+import * as firebase from 'firebase';
+
 //const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
  
 
@@ -57,6 +60,7 @@ class CreateAccountPage extends React.Component{
         };
         this._updatePageState = this._updatePageState.bind(this);
         this._continueCheckValidation = this._continueCheckValidation.bind(this);
+        this._onContinuePress = this._onContinuePress.bind(this);
     }
 
     // navigate to different page
@@ -80,6 +84,15 @@ class CreateAccountPage extends React.Component{
             && validPassword 
             && validConfirmPassword
             && validPortraitUri);
+    }
+
+    _onContinuePress() {
+        firebase.auth()
+        .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(
+            (success)=>{ Alert.alert(success.message); }, 
+            (error)=>{ Alert.alert(error.message); }
+        );
     }
 
     render() {
@@ -206,7 +219,7 @@ class CreateAccountPage extends React.Component{
                                         </View>
 
                                         <View style={ styles.lowerInputContainer }>
-                                            <TouchableOpacity style={{ display: 'flex', justifyContent: 'left', alignItems: 'left' }}>
+                                            <TouchableOpacity onPress={ this._onContinuePress } style={{ display: 'flex', justifyContent: 'left', alignItems: 'left' }}>
                                                 { ( this._continueCheckValidation() ) ? <ContinueButtonPurple /> : <ContinueButtonGray /> }
                                             </TouchableOpacity>
                                         </View>

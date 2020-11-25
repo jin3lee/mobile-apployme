@@ -8,7 +8,7 @@ import CreateAccountPage from "./createAccountPage.js";
 import DashBoard from "./dashboard.js";
 import ApiKeys from './../config/keys.js';
 
-import { PAGE_STATE_HOME, PAGE_STATE_SIGN_UP } from './../redux/actionTypes.js';
+import { PAGE_STATE_HOME, PAGE_STATE_SIGN_UP, PAGE_STATE_DASH_BOARD } from './../redux/actionTypes.js';
 
 
 // firebase
@@ -20,17 +20,26 @@ class PageContainer extends React.Component {
     super( props );
     this.state = {
       pageState: null,
+      isAuthenticatedReady: false,
+      isAuthenticated: false,
     }
     this._getPageBasedOnState = this._getPageBasedOnState.bind(this);
+    this._onAuthStateChanged = this._onAuthStateChanged.bind(this);
 
     if(!firebase.apps.length) {
       firebase.initializeApp( ApiKeys.firebaseConfig );
     }
+    firebase.auth().onAuthStateChanged( this._onAuthStateChanged );
   }
 
   componentDidMount() {
     // set the default screen state
     this.setState( { pageState: this.props.pageState } );
+  }
+
+  _onAuthStateChanged = (user) => {
+    this.setState({ isAuthenticatedReady: true });
+    this.setState({ isAuthenticated: !!user });
   }
 
   _getPageBasedOnState() {
@@ -44,12 +53,20 @@ class PageContainer extends React.Component {
         return <CreateAccountPage />;
       case PAGE_STATE_HOME:
         return <HomePage />;
+      case PAGE_STATE_DASH_BOARD:
+        return <DashBoard />;
       default:
         return <HomePage />;
     }
   }
 
   render() {
+    console.log('pageContainer', this.state);
+    
+    if(this.state.isAuthenticated){
+      return <View><DashBoard /></View>;
+    }
+
     return(
       <View style={ styles.container }>
         { this._getPageBasedOnState() }
