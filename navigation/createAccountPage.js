@@ -90,8 +90,16 @@ class CreateAccountPage extends React.Component{
         firebase.auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then(
-            (success)=>{ Alert.alert(success.message); }, 
+            (success)=>{ this._sendVerificationEmail(); }, 
             (error)=>{ Alert.alert(error.message); }
+        );
+    }
+
+    _sendVerificationEmail() {
+        var user = firebase.auth().currentUser;
+        user.sendEmailVerification().then(
+            ()=>{ console.log("email verification SUCCESS") },
+            (error)=>{ console.log("email verification failed") }
         );
     }
 
