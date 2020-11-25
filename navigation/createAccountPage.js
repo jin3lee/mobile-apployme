@@ -14,6 +14,7 @@ import UnderlineShort from './../assets/underlineShort.js';
 import UnderlineGreen from './../assets/underlineGreen.js';
 import UnderlineGreenShort from './../assets/underlineGreenShort.js';
 import ContinueButtonGray from './../assets/continueButtonGray.js';
+import ContinueButtonPurple from './../assets/continueButtonPurple.js';
 
 // STATE
 import { connect } from 'react-redux';
@@ -55,6 +56,7 @@ class CreateAccountPage extends React.Component{
             portraitUri: null,
         };
         this._updatePageState = this._updatePageState.bind(this);
+        this._continueCheckValidation = this._continueCheckValidation.bind(this);
     }
 
     // navigate to different page
@@ -62,8 +64,28 @@ class CreateAccountPage extends React.Component{
         this.props.dispatch( actionUpdatePageState( pageState ) );
     }
 
+    _continueCheckValidation() {
+        let validFirstName = ( this.state.firstName && this.state.firstName.length > 1 );
+        let validLastName = ( this.state.lastName && this.state.lastName.length > 1 );
+        let validPhoneNumber = ( parsePhoneNumber(''+this.state.phoneNumber, 'US') && parsePhoneNumber(''+this.state.phoneNumber, 'US').isValid() );
+        let validEmail = (validator.validate( this.state.email ));
+        let validPassword = ( schema.validate( this.state.password ) );
+        let validConfirmPassword = ( schema.validate( this.state.confirmPassword ) && this.state.confirmPassword === this.state.password );
+        let validPortraitUri = (this.state.portraitUri && this.state.portraitUri !== null );
+
+        return ( validFirstName 
+            && validLastName 
+            && validPhoneNumber 
+            && validEmail 
+            && validPassword 
+            && validConfirmPassword
+            && validPortraitUri);
+    }
+
     render() {
-        console.log("this.state.portraitUri: ", this.state.portraitUri);
+
+            console.log( 'continueCheck=', this._continueCheckValidation() );
+
         return (
             <View style={ styles.container }>
                 <StatusBar barStyle="light-content" />
@@ -184,8 +206,8 @@ class CreateAccountPage extends React.Component{
                                         </View>
 
                                         <View style={ styles.lowerInputContainer }>
-                                            <TouchableOpacity style={{ backgroundColor: '#1A152D', width: 161, height: 54, borderRadius: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                                <ContinueButtonGray />
+                                            <TouchableOpacity style={{ display: 'flex', justifyContent: 'left', alignItems: 'left' }}>
+                                                { ( false ) ? <ContinueButtonPurple /> : <ContinueButtonGray /> }
                                             </TouchableOpacity>
                                         </View>
 
