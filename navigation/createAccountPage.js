@@ -207,7 +207,7 @@ class CreateAccountPage extends React.Component{
 
                                         <View style={ styles.lowerInputContainer }>
                                             <TouchableOpacity style={{ display: 'flex', justifyContent: 'left', alignItems: 'left' }}>
-                                                { ( false ) ? <ContinueButtonPurple /> : <ContinueButtonGray /> }
+                                                { ( this._continueCheckValidation() ) ? <ContinueButtonPurple /> : <ContinueButtonGray /> }
                                             </TouchableOpacity>
                                         </View>
 
