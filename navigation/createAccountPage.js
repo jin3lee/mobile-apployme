@@ -20,6 +20,9 @@ import { connect } from 'react-redux';
 import { PAGE_STATE_HOME } from './../redux/actionTypes.js';
 import { actionUpdatePageState } from './../redux/actions.js';
 
+// Photo picker
+import * as ImagePicker from 'expo-image-picker';
+
 // VALIDATOR
 var validator = require("email-validator");
 var passwordValidator = require('password-validator');
@@ -27,9 +30,17 @@ import parsePhoneNumber from 'libphonenumber-js';
 
 //const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
  
+
+    // console.log("email validator", validator.validate("test@email.com"));
+    // console.log("password validator", schema.validate("hello234"));
+    // const phoneNumber = parsePhoneNumber('534269441', 'US')
+    // if ( phoneNumber ) {
+    //     console.log( "phone#", phoneNumber.isValid() )
+    // }
+
 // Create a schema
 var schema = new passwordValidator();
-schema.is().min(8);     // Minimum length 8
+schema.is().min(8);     // Minimum length 1
 
 class CreateAccountPage extends React.Component{
     constructor( props ) {
@@ -51,14 +62,6 @@ class CreateAccountPage extends React.Component{
     }
 
     render() {
-
-        console.log("email validator", validator.validate("test@email.com"));
-        console.log("password validator", schema.validate("hello234"));
-        const phoneNumber = parsePhoneNumber('534269441', 'US')
-        
-        if ( phoneNumber ) {
-            console.log( "phone#", phoneNumber.isValid() )
-        }
 
         return (
             <View style={ styles.container }>
@@ -97,7 +100,7 @@ class CreateAccountPage extends React.Component{
                                                         }}
                                                     />
                                                 </View>
-                                                { (false) ? <UnderlineShort /> : <UnderlineGreenShort /> }
+                                                { ( this.state.firstName && this.state.firstName.length > 1 ) ? <UnderlineGreenShort /> : <UnderlineShort />  }
                                             </View>
                                             
                                             <View>
@@ -108,7 +111,7 @@ class CreateAccountPage extends React.Component{
                                                         }}
                                                     />
                                                 </View>
-                                                <UnderlineShort />
+                                                { ( this.state.lastName && this.state.lastName.length > 1 ) ? <UnderlineGreenShort /> : <UnderlineShort />  }
                                             </View>
                                         </View>
                                     </View>
@@ -121,7 +124,7 @@ class CreateAccountPage extends React.Component{
                                                     }}
                                                 />
                                             </View>
-                                            <Underline />
+                                            { ( parsePhoneNumber(''+this.state.phoneNumber, 'US') && parsePhoneNumber(''+this.state.phoneNumber, 'US').isValid() ) ? <UnderlineGreenShort /> : <UnderlineShort />  }
                                         </View>
                                         
                                         <View style={ styles.lowerInputContainer }>
@@ -132,7 +135,7 @@ class CreateAccountPage extends React.Component{
                                                     }}
                                                 />
                                             </View>
-                                            <Underline />
+                                            { (validator.validate( this.state.email )) ?  <UnderlineGreen /> : <Underline /> }
                                         </View>
 
                                         <View style={ styles.lowerInputContainer }>
@@ -143,7 +146,8 @@ class CreateAccountPage extends React.Component{
                                                     }}
                                                 />
                                             </View>
-                                            <Underline />
+                                            { ( schema.validate( this.state.password ) ) ?  <UnderlineGreen /> : <Underline /> }
+                                            
                                         </View>
 
                                         <View style={ styles.lowerInputContainer }>
@@ -154,7 +158,7 @@ class CreateAccountPage extends React.Component{
                                                     }}
                                                 />
                                             </View>
-                                            <Underline />
+                                            { ( schema.validate( this.state.confirmPassword ) && this.state.confirmPassword === this.state.password ) ?  <UnderlineGreen /> : <Underline /> }
                                         </View>
 
                                         <View style={ styles.lowerInputContainer }>
