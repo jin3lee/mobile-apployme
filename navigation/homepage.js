@@ -13,7 +13,7 @@ import RightArrow from './../assets/rightArrow.js';
 
 // STATE
 import { connect } from 'react-redux';
-import { PAGE_STATE_SIGN_UP, PAGE_STATE_DASH_BOARD } from './../redux/actionTypes.js';
+import { PAGE_STATE_SIGN_UP, PAGE_STATE_DASH_BOARD, PAGE_STATE_FORGOT_PASSWORD } from './../redux/actionTypes.js';
 import { actionUpdatePageState } from './../redux/actions.js';
 
 // Firebase
@@ -28,11 +28,16 @@ class HomePage extends React.Component{
         };
         this._updatePageState = this._updatePageState.bind(this);
         this._onLoginPress = this._onLoginPress.bind(this);
+        this._onForgotPasswordPress = this._onForgotPasswordPress.bind(this);
     }
 
     // navigate to different page
     _updatePageState( pageState ) {
         this.props.dispatch( actionUpdatePageState( pageState ) );
+    }
+
+    _onForgotPasswordPress = () => {
+        this._updatePageState( PAGE_STATE_FORGOT_PASSWORD );
     }
 
     _onLoginPress = () => {
@@ -92,7 +97,7 @@ class HomePage extends React.Component{
                                     </View>
                                     <Underline />
 
-                                    <TouchableOpacity style={{ width: 180, paddingTop: 10, paddingBottom: 10, marginTop: 10, marginBottom: 10 }}>
+                                    <TouchableOpacity onPress={ ()=>{ this._onForgotPasswordPress() }} style={{ width: 180, paddingTop: 10, paddingBottom: 10, marginTop: 10, marginBottom: 10 }}>
                                         <Text style={{ fontSize: 14, fontWeight: '400', color: '#9E9E9E'}}>Forgot password?</Text>
                                     </TouchableOpacity>
 

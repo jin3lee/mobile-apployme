@@ -6,9 +6,15 @@ import { View, Text } from "react-native";
 import HomePage from "./homepage.js";
 import CreateAccountPage from "./createAccountPage.js";
 import DashBoard from "./dashboard.js";
+import ForgotPasswordPage from "./forgotPasswordPage.js";
 import ApiKeys from './../config/keys.js';
 
-import { PAGE_STATE_HOME, PAGE_STATE_SIGN_UP, PAGE_STATE_DASH_BOARD } from './../redux/actionTypes.js';
+import { 
+  PAGE_STATE_HOME, 
+  PAGE_STATE_SIGN_UP, 
+  PAGE_STATE_DASH_BOARD, 
+  PAGE_STATE_FORGOT_PASSWORD 
+} from './../redux/actionTypes.js';
 
 
 // firebase
@@ -55,6 +61,8 @@ class PageContainer extends React.Component {
         return <HomePage />;
       case PAGE_STATE_DASH_BOARD:
         return <DashBoard />;
+      case PAGE_STATE_FORGOT_PASSWORD:
+        return <ForgotPasswordPage />;
       default:
         return <HomePage />;
     }
