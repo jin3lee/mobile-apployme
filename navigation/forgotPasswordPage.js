@@ -1,9 +1,19 @@
 import React from 'react';
-import { View, Text, Button, TextInput, Alert } from 'react-native';
+import { View, Text, Button, TextInput, Alert,
+    StatusBar, TouchableOpacity } from 'react-native';
 
 import { connect } from 'react-redux';
 import { PAGE_STATE_HOME } from './../redux/actionTypes.js';
 import { actionUpdatePageState } from './../redux/actions.js';
+
+// SVGs
+import ForgotPasswordUbuntuText from './../assets/svgs/forgotPasswordUbuntuText.js';
+import BackButtonForgotPassword from './../assets/svgs/backButtonForgotPassword.js';
+import Underline from './../assets/svgs/underline.js';
+import UnderlineGreen from './../assets/svgs/underlineGreen.js';
+import ContinueButtonGray from './../assets/svgs/continueButtonGray.js';
+import ContinueButtonPurple from './../assets/svgs/continueButtonPurple.js';
+
 
 // Firebase
 import * as firebase from 'firebase';
@@ -37,17 +47,34 @@ class ForgotPasswordPage extends React.Component{
 
     render() {
         return (
-            <View style={{ display: 'flex', justifyContent: 'center', height: '100%', alignItems: 'center' }}>
-                <Text>Enter your email to reset your password</Text>
-                <TextInput
-                    style={{ margin: 15, padding:5, width:'40%', backgroundColor: 'rgba(0, 0, 0, .05)' }} 
-                    placeholder="email" 
-                    onChangeText={( email ) => {
-                        this.setState({ email: email });
-                    }} 
-                />
-                <Button onPress={ this._sendResetPasswordEmailPress } title="Send Reset Password Email" />
-                <Button onPress={ this._goBackPress } title="<-Back" />
+            <View style={{ display: 'flex', height: '100%' }}>
+                <View style={{ display: 'flex', width:'80%', alignItems: 'left', marginLeft: '7%', marginTop: 84 }}>
+                    <StatusBar barStyle="dark-content" />
+                    <TouchableOpacity onPress={ this._goBackPress }>
+                        <BackButtonForgotPassword />
+                    </TouchableOpacity>
+                    
+                    <View style={{ marginTop: 122 }} />
+                    <ForgotPasswordUbuntuText />
+                    
+                    <Text style={{ fontWeight: '400', marginTop: 18 }}>Please enter the phone or email address associated with your account.</Text>
+                    
+                    <View style={{ marginTop: 70 }} />
+                    <TextInput
+                        style={{ padding:10, marginBottom: 3, width:'100%' }} 
+                        placeholder="Enter Email" 
+                        onChangeText={( email ) => {
+                            this.setState({ email: email });
+                        }} 
+                    />
+                    <View style={{ backgroundColor: 'gray', width: '100%', height: 2}} />
+                    
+                    
+                    <View style={{ marginTop: 50 }} />
+                    <TouchableOpacity onPress={ this._sendResetPasswordEmailPress }>
+                        <ContinueButtonGray />
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }

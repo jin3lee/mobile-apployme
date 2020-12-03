@@ -4,12 +4,12 @@ import { View, Text, TextInput,
     StatusBar, TouchableOpacity } from 'react-native';
 
 // SVGs
-import PurpleBlob from './../assets/purpleblob.js';
-import ApployMeLogo from './../assets/apployMeLogo.js';
-import Avatar from './../assets/avatar.js';
-import Lock from './../assets/lock.js';
-import Underline from './../assets/underline.js';
-import RightArrow from './../assets/rightArrow.js';
+import PurpleBlob from './../assets/svgs/purpleblob.js';
+import ApployMeLogo from '../assets/svgs/apployMeLogo.js';
+import Avatar from './../assets/svgs/avatar.js';
+import Lock from './../assets/svgs/lock.js';
+import Underline from './../assets/svgs/underline.js';
+import RightArrow from './../assets/svgs/rightArrow.js';
 
 // STATE
 import { connect } from 'react-redux';

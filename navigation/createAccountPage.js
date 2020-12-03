@@ -4,17 +4,17 @@ import { View, Text, TextInput,
     StatusBar, TouchableOpacity } from 'react-native';
 
 // SVGs
-import PurpleBlob from './../assets/purpleblob.js';
-import CirclePageMarkOne from './../assets/circlePageMarkOne.js';
-import UploadPicture from './../assets/uploadPicture.js';
-import CameraIcon from './../assets/cameraIcon.js';
-import EyeSlash from './../assets/eyeSlash.js';
-import Underline from './../assets/underline.js';
-import UnderlineShort from './../assets/underlineShort.js';
-import UnderlineGreen from './../assets/underlineGreen.js';
-import UnderlineGreenShort from './../assets/underlineGreenShort.js';
-import ContinueButtonGray from './../assets/continueButtonGray.js';
-import ContinueButtonPurple from './../assets/continueButtonPurple.js';
+import PurpleBlob from './../assets/svgs/purpleblob.js';
+import CirclePageMarkOne from './../assets/svgs/circlePageMarkOne.js';
+import UploadPicture from './../assets/svgs/uploadPicture.js';
+import CameraIcon from './../assets/svgs/cameraIcon.js';
+import EyeSlash from './../assets/svgs/eyeSlash.js';
+import Underline from './../assets/svgs/underline.js';
+import UnderlineShort from './../assets/svgs/underlineShort.js';
+import UnderlineGreen from './../assets/svgs/underlineGreen.js';
+import UnderlineGreenShort from './../assets/svgs/underlineGreenShort.js';
+import ContinueButtonGray from './../assets/svgs/continueButtonGray.js';
+import ContinueButtonPurple from './../assets/svgs/continueButtonPurple.js';
 
 // STATE
 import { connect } from 'react-redux';
