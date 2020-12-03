@@ -81,6 +81,7 @@ class HomePage extends React.Component{
                                             onChangeText={ ( email ) => {
                                                 this.setState({ email: email });
                                             }}
+                                            keyboardType="email-address"
                                         />
                                     </View>
                                     <Underline />
@@ -93,6 +94,7 @@ class HomePage extends React.Component{
                                             onChangeText={ ( password ) => {
                                                 this.setState({ password: password });
                                             }}
+                                            keyboardType="password"
                                         />
                                     </View>
                                     <Underline />

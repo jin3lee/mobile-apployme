@@ -12,8 +12,11 @@ import BackButtonForgotPassword from './../assets/svgs/backButtonForgotPassword.
 import Underline from './../assets/svgs/underline.js';
 import UnderlineGreen from './../assets/svgs/underlineGreen.js';
 import ContinueButtonGray from './../assets/svgs/continueButtonGray.js';
-import ContinueButtonPurple from './../assets/svgs/continueButtonPurple.js';
+import ContinueButtonLightPurple from './../assets/svgs/continueButtonLightPurple.js';
 
+
+// VALIDATOR
+var validator = require("email-validator");
 
 // Firebase
 import * as firebase from 'firebase';
@@ -24,6 +27,7 @@ class ForgotPasswordPage extends React.Component{
         super(props);
         this.state = {
             email: '',
+            isEmailValid: false,
         }
 
         this._goBackPress = this._goBackPress.bind(this);
@@ -36,10 +40,10 @@ class ForgotPasswordPage extends React.Component{
     }
 
     _sendResetPasswordEmailPress() {
-        if(this.state.email && this.state.email.length > 1){
+        if( this.state.isEmailValid ) {
             var auth = firebase.auth();
             auth.sendPasswordResetEmail(this.state.email).then(
-                ()=>{Alert.alert("Sent Email!!!");},
+                ()=>{ Alert.alert("Reset Email has been sent to " + this.state.email);},
                 (error)=>{ Alert.alert(error.message);}
             );
         }
@@ -61,18 +65,21 @@ class ForgotPasswordPage extends React.Component{
                     
                     <View style={{ marginTop: 70 }} />
                     <TextInput
-                        style={{ padding:10, marginBottom: 3, width:'100%' }} 
+                        style={{ padding:10, marginBottom: 3, width:'100%', fontWeight: '700', fontSize: 18 }} 
                         placeholder="Enter Email" 
+                        keyboardType="email-address"
                         onChangeText={( email ) => {
-                            this.setState({ email: email });
+                            this.setState({ 
+                                email: email,
+                                isEmailValid: validator.validate( this.state.email ),                 
+                            });
                         }} 
                     />
                     <View style={{ backgroundColor: 'gray', width: '100%', height: 2}} />
                     
-                    
                     <View style={{ marginTop: 50 }} />
                     <TouchableOpacity onPress={ this._sendResetPasswordEmailPress }>
-                        <ContinueButtonGray />
+                    { ( this.state.isEmailValid ) ? <ContinueButtonLightPurple /> : <ContinueButtonGray /> }
                     </TouchableOpacity>
                 </View>
             </View>
