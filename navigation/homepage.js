@@ -94,7 +94,6 @@ class HomePage extends React.Component{
                                             onChangeText={ ( password ) => {
                                                 this.setState({ password: password });
                                             }}
-                                            keyboardType="password"
                                         />
                                     </View>
                                     <Underline />
